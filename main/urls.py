@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from loja.views import index
+from loja.views import index, cadastrar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
+    path('cadastrar/', cadastrar, name="cadastrar"),
 ]
