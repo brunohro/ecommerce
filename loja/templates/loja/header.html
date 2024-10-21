@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header - E-Commerce</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Estilo do Cabeçalho */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo da Loja */
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Links de Navegação */
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Ícone de Carrinho */
+        .cart {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .cart img {
+            height: 30px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* Badge do carrinho (contagem de itens) */
+        .cart .cart-count {
+            position: absolute;
+            top: -5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 12px;
+        }
+
+        /* Imagem de Usuário */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-profile img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .user-profile span {
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Logo -->
+        <div class="logo">
+            <a href="#"><img src="https://via.placeholder.com/150x50?text=Loja+BH" alt="Logo da Loja"></a>
+        </div>
+
+        <!-- Links de Navegação -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Produtos</a>
+            <a href="#">Promoções</a>
+            <a href="#">Contato</a>
+        </nav>
+
+        <!-- Carrinho -->
+        <div class="cart">
+            <img src="https://via.placeholder.com/30x30?text=%F0%9F%9A%95" alt="Carrinho">
+            <span class="cart-count">3</span>
+        </div>
+
+        <!-- Perfil de Usuário -->
+        <div class="user-profile">
+            <span>Olá, Bruno</span>
+            <img src="https://via.placeholder.com/40" alt="Perfil do Usuário">
+        </div>
+    </header>
+
+</body>
+</html>
