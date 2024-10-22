@@ -1,5 +1,8 @@
 <div class="container">
-    <h1>Produtos</h1>
+    
+    {% for categoria in categorias %}
+        <h1>{{ categoria.nome }}</h1>
+    {% endfor %}
     <!-- Product List -->
     <div class="product-list">
         {% for produto in produtos%}
