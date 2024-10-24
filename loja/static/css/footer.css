@@ -1,0 +1,25 @@
+/* Define o layout da página para ocupar a tela toda */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Define um container flexível para o conteúdo e o rodapé */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Faz o conteúdo expandir para ocupar o espaço disponível */
+.content {
+    flex: 1;
+}
+
+/* Estiliza o rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%; /* Faz o rodapé ocupar a largura total */
+}
