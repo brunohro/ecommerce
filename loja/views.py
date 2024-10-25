@@ -7,3 +7,6 @@ def index(request):
 
 def cadastrar(request):
     return render(request, 'loja/cadastrar.html')
+
+def carrinho(request):
+    return render(request, 'loja/carrinho.html')

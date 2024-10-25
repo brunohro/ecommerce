@@ -15,12 +15,12 @@
     <header>
         <!-- Logo -->
         <div class="logo">
-            <a href="#"><img src="{%static 'image/logo.png'%}" alt="Logo da Loja"></a>
+            <a href="{% url "index" %}"><img src="{%static 'image/logo.png'%}" alt="Logo da Loja"></a>
         </div>
 
         <!-- Links de Navegação -->
         <nav>
-            <a href="#">Home</a>
+            <a href="{% url "index" %}">Home</a>
             <a href="#">Produtos</a>
             <a href="#">Promoções</a>
             <a href="#">Contato</a>
@@ -28,7 +28,7 @@
 
         <!-- Carrinho -->
         <div class="cart">
-            <img src="{% static 'image/cart.png' %}" alt="Carrinho">
+            <a href="{% url "carrinho" %}"><img src="{% static 'image/cart.png' %}" alt="Carrinho"></a>
             <span class="cart-count">3</span>
         </div>
 
