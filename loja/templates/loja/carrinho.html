@@ -12,7 +12,7 @@
 </head>
 <body>
     {% include "loja/header.html" %}
-        <div class="cart-container">
+        <!-- <div class="cart-container">
             <h1>Carrinho de Compras</h1>
             <div class="cart-item">
                 <div class="item-image">
@@ -26,25 +26,27 @@
                     <button class="remove-btn">Remover</button>
                 </div>
             </div>
-            
+            -->
+        {% for id, item in carrinho %}
             <div class="cart-item">
                 <div class="item-image">
                     <img src="https://via.placeholder.com/80" alt="Imagem do Produto">
                 </div>
                 <div class="item-details">
-                    <h2>Produto 2</h2>
+                    <h2>{{ item.produto_nome }}</h2>
                     <p>Descrição breve do produto.</p>
                     <p>Quantidade: <input type="number" value="2" min="1"></p>
-                    <p>Preço: R$ 100,00</p>
-                    <button class="remove-btn">Remover</button>
+                    <p>R$ {{ item.preco }}</p>
+                    <a class="remove-btn" href="{% url 'remover_produto' id %}">Remover</a>
                 </div>
             </div>
+        {% endfor %}
 
             <div class="total-container">
-                <h3>Total: R$ 150,00</h3>
+                <h3>R$ {{ preco_total }}</h3>
                 <button class="checkout-btn">Finalizar Compra</button>
             </div>
-        </div>
+        
     {% include "loja/footer.html" %}
 
     <script src="{% static 'js/script.js' %}"></script>

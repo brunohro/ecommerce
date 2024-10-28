@@ -1,13 +1,15 @@
 
 from django.contrib import admin
 from django.urls import path
-from loja.views import index, cadastrar, carrinho
+from loja.views import index, cadastrar, carrinho, add_ao_carrinho, remover_produto
 from main import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('cadastrar/', cadastrar, name="cadastrar"),
+    path('add_ao_carrinho/<int:id>/', add_ao_carrinho, name='add_ao_carrinho'),
+    path('remover_produto/<int:id>/', remover_produto, name='remover_produto'),
     path('carrinho/', carrinho, name="carrinho"),
 ]
 
