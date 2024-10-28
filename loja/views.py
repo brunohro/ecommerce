@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto, Categoria, CarrinhoItem
+=======
+from django.shortcuts import render, redirect
+from .models import Produto, Categoria, Cliente
+from .forms import ClienteForm
+>>>>>>> c2003ad6e8523a2f2ddb5a5eb6259759398b3a73
 def index(request):
     produto = Produto.objects.all()
     categoria = Categoria.objects.all()
     return render(request, 'loja/index.html', {'produtos': produto, 'categorias': categoria})
+def carrinho(request):
+    return render(request, 'loja/carrinho.html')
 
 def cadastrar(request):
+<<<<<<< HEAD
     return render(request, 'loja/cadastrar.html')
 
 
@@ -55,3 +64,13 @@ def remover_produto(request, id):
     request.session['carrinho'] = carrinho
 
     return redirect('carrinho')
+=======
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else: 
+        form = ClienteForm()
+    return render(request, 'loja/cadastrar.html', {'form': form})
+>>>>>>> c2003ad6e8523a2f2ddb5a5eb6259759398b3a73
