@@ -16,6 +16,20 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Carrinho(models.Model):
+    user_id = models.IntegerField(blank=True, null=True)
+    produto = models.ManyToManyField(Produto)
+    valor = models.FloatField(blank=True, null=True)
+    total_produto = models.FloatField(max_length=10, blank=True, null=True)
+
+
+class CarrinhoItem(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    quantidade = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return self.produto
     
     
 class Cliente(models.Model):

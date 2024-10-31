@@ -5,12 +5,12 @@
     {% endfor %}
     <!-- Product List -->
     <div class="product-list">
-        {% for produto in produtos%}
+        {% for produto in produtos %}
             <div class="product-item">
                 <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
-                <h2>{{ produto.nome}}</h2>
-                <p> R$ {{ produto.preco}}</p>
-                <button class="btn">Add ao carrinho</button>
+                <h2>{{ produto.nome }}</h2>
+                <p> R$ {{ produto.preco }}</p>
+                <a class="btn" href="{% url 'add_ao_carrinho' produto.id %}">Add ao carrinho</a>
             </div>
         {% endfor %}
     

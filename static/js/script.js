@@ -10,3 +10,5 @@ form.addEventListener('submit', function(event) {
         passwordError.style.display = 'block'; // Mostra a mensagem de erro
     }
 });
+
+// ------------------------------------------------------------------------------------------------------------------
