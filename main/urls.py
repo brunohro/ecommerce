@@ -4,9 +4,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.urls import path
-from loja.views import index, cadastrar_cliente, carrinho, add_ao_carrinho, remover_produto
+from loja.views import cadastrar_cliente, carrinho, add_ao_carrinho, remover_produto
 from django.conf.urls.static import static
-from loja.views import carrinho
 from ecommerce.views import index
 from main import settings
 
