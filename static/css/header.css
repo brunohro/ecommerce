@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo do Cabeçalho */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 5%; /* Ajustado para porcentagem */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte em telas menores */
+}
+
+/* Logo da Loja */
+.logo img {
+    height: 80px; /* Ajustado para um tamanho menor em telas pequenas */
+    width: auto;
+}
+
+/* Links de Navegação */
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Permite que os links se movam para a linha seguinte */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px; /* Ajustado o padding */
+    transition: background-color 0.3s; /* Suaviza a transição */
+}
+
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Ícone de Carrinho */
+.cart {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.cart img {
+    height: 30px;
+    width: auto;
+    margin-right: 5px; /* Reduzido o espaço */
+}
+
+/* Badge do carrinho (contagem de itens) */
+.cart .cart-count {
+    position: absolute;
+    top: -5px;
+    right: 0; /* Ajustado para melhor alinhamento */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px; /* Ajustado o padding */
+    font-size: 12px;
+}
+
+/* Imagem de Usuário */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Ajustado o espaço */
+}
+
+.user-profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.user-profile span {
+    color: white;
+    font-size: 16px;
+}
+
+/* Consultas de Mídia para Responsividade */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px; /* Reduz o padding em telas menores */
+    }
+
+    .logo img {
+        height: 50px; /* Reduz a altura da logo */
+    }
+
+    nav {
+        gap: 10px; /* Ajusta o espaçamento entre os links */
+    }
+
+    nav a {
+        font-size: 14px; /* Reduz o tamanho da fonte dos links */
+        padding: 6px 10px; /* Ajusta o padding */
+    }
+
+    .user-profile img {
+        height: 30px; /* Reduz a altura da imagem de usuário */
+        width: 30px; /* Reduz a largura da imagem de usuário */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Altera a direção dos itens para coluna */
+        align-items: flex-start; /* Alinha itens à esquerda */
+    }
+
+    nav {
+        justify-content: flex-start; /* Alinha links à esquerda */
+        width: 100%; /* Faz os links ocuparem toda a largura */
+    }
+}

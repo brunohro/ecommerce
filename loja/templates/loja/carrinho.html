@@ -1,15 +1,55 @@
-<div class="cart-items">
-    <h1>Your Cart</h1>
-    <div class="cart-item">
-        <h2>Product 1</h2>
-        <p>Quantity: 2</p>
-        <p>Total: $50.00</p>
-        <button class="btn">Remove</button>
-    </div>
-    <div class="cart-item">
-        <h2>Product 2</h2>
-        <p>Quantity: 1</p>
-        <p>Total: $35.00</p>
-        <button class="btn">Remove</button>
-    </div>
-</div>
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'css/carrinho.css' %}">
+   
+</head>
+<body>
+    {% include "loja/header.html" %}
+        <!-- <div class="cart-container">
+            <h1>Carrinho de Compras</h1>
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="https://via.placeholder.com/80" alt="Imagem do Produto">
+                </div>
+                <div class="item-details">
+                    <h2>Produto 1</h2>
+                    <p>Descrição breve do produto.</p>
+                    <p>Quantidade: <input type="number" value="1" min="1"></p>
+                    <p>Preço: R$ 50,00</p>
+                    <button class="remove-btn">Remover</button>
+                </div>
+            </div>
+            -->
+        {% for id, item in carrinho %}
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="https://via.placeholder.com/80" alt="Imagem do Produto">
+                </div>
+                <div class="item-details">
+                    <h2>{{ item.produto_nome }}</h2>
+                    <p>Descrição breve do produto.</p>
+                    <p>Quantidade: <input type="number" value="2" min="1"></p>
+                    <p>R$ {{ item.preco }}</p>
+                    <a class="remove-btn" href="{% url 'remover_produto' id %}">Remover</a>
+                </div>
+            </div>
+        {% endfor %}
+
+            <div class="total-container">
+                <h3>R$ {{ preco_total }}</h3>
+                <button class="checkout-btn">Finalizar Compra</button>
+            </div>
+        
+    {% include "loja/footer.html" %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+    
+</body>
+</html>

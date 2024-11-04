@@ -1,14 +1,24 @@
 from django.contrib import admin
-from .models import Categoria, Produto
-# Register your models here.
+from .models import Categoria, Produto, Carrinho, CarrinhoItem, Cliente
 
+# Register your models here.
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('nome')
+    list_display = ('nome',)  
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('nome')
+    list_display = ('nome',) 
 
-admin.site.register(Categoria)
-admin.site.register(Produto)
+@admin.register(Carrinho)
+class CarrinhoAdmin(admin.ModelAdmin):
+    list_display = ('valor',)
+
+@admin.register(CarrinhoItem)
+class CarrinhoItemAdmin(admin.ModelAdmin):
+    list_display = ('quantidade',)  
+    
+@admin.register(Cliente)
+class ClienteAdmin(admin.ModelAdmin):
+    list_display = ('nome_completo',) 
+
