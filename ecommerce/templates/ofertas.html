@@ -6,22 +6,45 @@
     <title>Ofertas</title>
 </head>
 <body>
-    <section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
-        <div class="mx-auto grid max-w-screen-xl rounded-lg bg-gray-50 p-4 dark:bg-gray-800 md:p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-16">
-          <div class="lg:col-span-5 lg:mt-0">
-            <a href="#">
-              <img class="mb-4 h-56 w-56 dark:hidden sm:h-96 sm:w-96 md:h-full md:w-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components.svg" alt="peripherals" />
-              <img class="mb-4 hidden dark:block md:h-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components-dark.svg" alt="peripherals" />
-            </a>
-          </div>
-          <div class="me-auto place-self-center lg:col-span-7">
-            <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
-              Save $500 today on your purchase <br />
-              of a new iMac computer.
-            </h1>
-            <p class="mb-6 text-gray-500 dark:text-gray-400">Reserve your new Apple iMac 27” today and enjoy exclusive savings with qualified activation. Pre-order now to secure your discount.</p>
-            <a href="#" class="inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Pre-order now </a>
-          </div>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+          <div class="max-w-screen-md mb-8 lg:mb-16">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                Ofertas Imperdíveis
+            </h2>
+            <p class="text-gray-500 sm:text-xl dark:text-gray-400">
+                Descubra nossos produtos com preços especiais e aproveite as melhores oportunidades. Não perca!
+            </p>
+        </div>
+            <div class="flex flex-wrap justify-center" style="gap: 30px;">
+                {% for produto in produtos %}
+                    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            <img class="p-8 rounded-t-lg" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
+                        </a>
+                        <div class="px-5 pb-5">
+                            <a href="#">
+                                <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ produto.nome }}</h5>
+                            </a>
+                            <div class="flex items-center mt-2.5 mb-5">
+                                <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                                    <!-- SVGs das estrelas de avaliação -->
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    <!-- (Repita o SVG acima para exibir mais estrelas) -->
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-3xl font-bold text-gray-900 dark:text-white">R$ {{ produto.preco }}</span>
+                                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add ao carrinho</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
         </div>
       </section>
 </body>

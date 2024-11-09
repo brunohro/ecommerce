@@ -6,3 +6,8 @@ def index(request):
     produto = Produto.objects.all()
     categoria = Categoria.objects.all()
     return render(request, 'base.html', {'produtos': produto, 'categorias': categoria})
+
+def ofertas(request):
+    produto = Produto.objects.all()
+    categoria = Categoria.objects.all()
+    return render(request, 'ofertas.html', {'produtos': produto, 'categorias': categoria})

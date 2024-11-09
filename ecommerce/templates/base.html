@@ -10,12 +10,12 @@
 	</head>
 
 	<body>
+		{% block content %}
 		{% include "cabecalho.html" %}
-		{% include "secaoUm.html" %}
-<<<<<<< HEAD
+		{% include "secao_um.html" %}
+		{% include "lancamentos.html" %}
 		{% include "ofertas.html" %}
-=======
 		{% include "planos.html" %}
->>>>>>> 33585ab39e643590486679da54628045c1e9c9c5
+		{% endblock content %}
 	</body>
 </html>
