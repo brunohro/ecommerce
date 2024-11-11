@@ -4,9 +4,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.urls import path
-from loja.views import cadastrar_cliente, carrinho, add_ao_carrinho, remover_produto
 from django.conf.urls.static import static
-from ecommerce.views import index, ofertas
+from ecommerce.views import index, ofertas, cadastrar_cliente, carrinho, add_ao_carrinho, remover_produto
 from main import settings
 
 urlpatterns = [
