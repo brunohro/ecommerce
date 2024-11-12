@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+</head>
+<body>
+    <section class="categories-section py-10">
+        <div class="container mx-auto text-center">
+            <h2 class="titlee">Categorias</h2>
+            <div class="categories-container">
+                <div class="category-item">
+                    <img src="{% static 'image/roupas.jpg' %}" alt="Roupas" class="category-img" />
+                    <span class="category-name">Roupas</span>
+                </div>
+                <div class="category-item">
+                    <img src="{% static 'image/calcados.jpg' %}" alt="Calçados" class="category-img" />
+                    <span class="category-name">Calçados</span>
+                </div>
+                <div class="category-item">
+                    <img src="{% static 'image/informatica.jpg' %}" alt="Informática" class="category-img" />
+                    <span class="category-name">Informática</span>
+                </div>
+                <div class="category-item">
+                    <img src="{% static 'image/acessorios.jpg' %}" alt="Acessórios" class="category-img" />
+                    <span class="category-name">Acessórios</span>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <style>
+        .categories-section {
+            background-color: #333;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        
+        .categories-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .titlee {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            padding-bottom: 15px;
+        }
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        
+        .category-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+    </style>
+    
+</body>
+</html>
