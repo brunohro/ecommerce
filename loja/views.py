@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto, Categoria, CarrinhoItem, Cliente
-from .forms import ClienteForm
+from ..ecommerce.forms import ClienteForm
 def index(request):
     produto = Produto.objects.all()
     categoria = Categoria.objects.all()
@@ -57,12 +57,3 @@ def remover_produto(request, id):
 
     return redirect('carrinho')
 
-def cadastrar_cliente(request):
-    if request.method == 'POST':
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else: 
-        form = ClienteForm()
-    return render(request, 'loja/cadastrar.html', {'form': form})
