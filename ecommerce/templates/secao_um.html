@@ -7,12 +7,43 @@
     <title>Banner</title>
 </head>
 <body>
-    <section class="dark:bg-gray-900">
-        <div class="flex justify-center">
-            <figure class="max-w-screen-lg">
-                <img src="{% static 'image/banner.jpg' %}" class="object-contain" alt="Logo" />
+    <section class="responsive-section">
+        <div class="image-container">
+            <figure class="image-wrapper">
+                <img src="{% static 'image/banner_inicio.jpg' %}" alt=" Logo" class="responsive-image">
             </figure>
         </div>
     </section>
 </body>
+
+<style>
+    .responsive-section {
+        width: 100%;
+        max-width: 1300px;
+
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .responsive-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: contain;
+    }
+</style>
+
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Friday</title>
+</head>
+<body>
+    <body>
+        <section class="ticker-section">
+            <div class="ticker-wrapper">
+                <div class="ticker">
+                    <span>Black Friday - Black Friday - Black Friday - Black Friday - Black Friday - Black Friday - Black Friday</span>
+                </div>
+            </div>
+        </section>
+    </body>
+    
+    <style>
+        .ticker-section {
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            padding: 10px 0;
+        }
+    
+        .ticker-wrapper {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+    
+        .ticker {
+            display: inline-block;
+            animation: ticker-animation 15s linear infinite;
+        }
+    
+        .ticker span {
+            font-size: 24px;
+            font-weight: bold;
+            padding-left: 100%;
+        }
+    
+        @keyframes ticker-animation {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+    
+</body>
+</html>
