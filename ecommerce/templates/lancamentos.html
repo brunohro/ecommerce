@@ -27,7 +27,7 @@
                         </div>
                         <div class="price-and-cart">
                             <span class="price">R$ {{ produto.preco }}</span>
-                            <a href="#" class="add-to-cart-btn">Add ao carrinho</a>
+                            <a href="{% url 'add_ao_carrinho' produto.id %}" class="add-to-cart-btn">Add ao carrinho</a>
                         </div>
                     </div>
                 </div>
