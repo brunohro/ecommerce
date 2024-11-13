@@ -28,8 +28,8 @@
                 <td class="px-4 py-2 border">{{ cliente.email }}</td>
                 <td class="px-4 py-2 border">{{ cliente.funcao }}</td>
                 <td class="px-4 py-2 border">
-                    <a href="#" class="text-blue-500 hover:underline">Editar</a> |
-                    <a href="#" class="text-red-500 hover:underline">Remover</a>
+                    <a href="{% url 'editar_cliente' cliente.id %}" class="text-blue-500 hover:underline">Editar</a> |
+                    <a href="{% url 'remover_cliente' cliente.id %}" class="text-red-500 hover:underline">Remover</a>
                 </td>
             </tr>
             {% endfor %}
