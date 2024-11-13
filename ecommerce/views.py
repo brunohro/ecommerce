@@ -20,7 +20,7 @@ def cadastrar_cliente(request):
             return redirect('index')
     else: 
         form = ClienteForm()
-    return render(request, 'cadastrar.html', {'form': form})
+    return render(request, 'clientes/cadastrar_cliente.html', {'form': form})
 
 def carrinho(request):
     return render(request, 'loja/carrinho.html')
