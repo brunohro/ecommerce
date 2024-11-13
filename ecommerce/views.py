@@ -73,3 +73,8 @@ def remover_produto(request, id):
 
     return redirect('carrinho')
 
+def adm(request):
+    cliente = Cliente.objects.all()
+    produto = Produto.objects.all()
+    categoria = Categoria.objects.all()
+    return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto,})

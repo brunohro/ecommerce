@@ -1,11 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de administrador</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-10">
+    <h1 class="text-3xl font-bold mb-6">Gerenciamento de Usuários</h1>
+
+    <!-- Botão para Adicionar Usuário -->
+    <div class="mb-4">
+        <a href="#" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
+            + Adicionar Cliente
+        </a>
+    </div>
+
+    <!-- Tabela de Usuários -->
+    <table class="table-auto w-full border-collapse">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 border">Nome</th>
+                <th class="px-4 py-2 border">Email</th>
+                <th class="px-4 py-2 border">Função</th>
+                <th class="px-4 py-2 border">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td class="px-4 py-2 border">{{ cliente.nome_completo }}</td>
+                <td class="px-4 py-2 border">{{ cliente.email }}</td>
+                <td class="px-4 py-2 border">{{ cliente.funcao }}</td>
+                <td class="px-4 py-2 border">
+                    <a href="#" class="text-blue-500 hover:underline">Editar</a> |
+                    <a href="#" class="text-red-500 hover:underline">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container py-10">
+    <h1 class="text-3xl font-bold mb-6">Gerenciamento de Produtos</h1>
+
+    <!-- Botão para Adicionar Usuário -->
+    <div class="mb-4">
+        <a href="#" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
+            + Adicionar Produto
+        </a>
+    </div>
+
+    <!-- Tabela de Usuários -->
+    <table class="table-auto w-full border-collapse">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 border">Nome</th>
+                <th class="px-4 py-2 border">Preço</th>
+                <th class="px-4 py-2 border">Categoria</th>
+                <th class="px-4 py-2 border">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td class="px-4 py-2 border">{{ produto.nome }}</td>
+                <td class="px-4 py-2 border">{{ produto.preco }}</td>
+                <td class="px-4 py-2 border">{{ produto.categoria }}</td>
+                <td class="px-4 py-2 border">
+                    <a href="#" class="text-blue-500 hover:underline">Editar</a> |
+                    <a href="#" class="text-red-500 hover:underline">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container py-10">
+    <h1 class="text-3xl font-bold mb-6">Gerenciamento de Categorias</h1>
+
+    <!-- Botão para Adicionar Usuário -->
+    <div class="mb-4">
+        <a href="#" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
+            + Adicionar Categoria
+        </a>
+    </div>
+
+    <!-- Tabela de Usuários -->
+    <table class="table-auto w-full border-collapse">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 border">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td class="px-4 py-2 border">{{ categoria.nome }}</td>
+                <td class="px-4 py-2 border">
+                    <a href="#" class="text-blue-500 hover:underline">Editar</a> |
+                    <a href="#" class="text-red-500 hover:underline">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Container Principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Botão de Adicionar Usuário */
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Estilização da Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #555;
+}
+
+td {
+    color: #333;
+}
+
+/* Links de Ações */
+a.text-blue-500 {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a.text-blue-500:hover {
+    color: #0056b3;
+}
+
+a.text-red-500 {
+    color: #dc3545;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a.text-red-500:hover {
+    color: #c82333;
+}
+
+</style>
+{% endblock %}
