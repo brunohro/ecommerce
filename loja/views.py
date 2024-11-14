@@ -19,7 +19,7 @@ def add_ao_carrinho(request, id):
 
     # Adiciona ou incrementa o produto no carrinho
     if str(id) in carrinho:
-        carrinho[str(id)]['quantidade'] += 1
+        carrinho[str(id)]['quantidade'] = 1
     else:
         carrinho[str(id)] = {
             'produto_nome': produto.nome,
