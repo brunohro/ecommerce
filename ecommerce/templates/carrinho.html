@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/carrinho.css' %}">
+<body>
+    <main id="main">
+        {% for id, item in carrinho %}
+            <div class="cart-item" data-id="{{ id }}" id="{{ id }}">
+                <div class="item-image">
+                    <img src="https://via.placeholder.com/80" alt="Imagem do Produto">
+                </div>
+                <div class="item-details">
+                    <h2>{{ item.produto_nome }}</h2>
+                    <p>Descrição breve do produto.</p>
+                    <p>Quantidade: <input class="quantidade" data-preco="{{ item.preco }}" data-id="{{ id }}" type="number" value="1" min="1"></p>
+                    <p>Preço unitário: R$ {{ item.preco }}</p>
+                    <p id="preco-total-{{ id }}">Preço total: R$ </p>
+                    <a class="remove-btn" href="{% url 'remover_produto' id %}">Remover</a>
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+
+        <div class="total-container">
+            <h3 id="preco-total"></h3>
+            <button class="checkout-btn">Finalizar Compra</button>
+        </div>
+
+    <script src="{% static 'js/carrinho.js' %}"></script>
+    
+</body>
+
+{% endblock content %}
+

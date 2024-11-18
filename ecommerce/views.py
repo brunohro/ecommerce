@@ -45,7 +45,7 @@ def ofertas(request):
     categoria = Categoria.objects.all()
     return render(request, 'ofertas.html', {'produtos': produto, 'categorias': categoria})
 def carrinho(request):
-    return render(request, 'loja/carrinho.html')
+    return render(request, 'carrinho.html')
 
 
 def add_ao_carrinho(request, id):
@@ -79,7 +79,7 @@ def carrinho(request):
         'carrinho': carrinho.items(),
         'preco_total': preco_total
     }
-    return render(request, 'loja/carrinho.html', context)
+    return render(request, 'carrinho.html', context)
 
 def remover_produto(request, id):
     
