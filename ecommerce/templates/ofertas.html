@@ -11,7 +11,7 @@
         </div>
             <div class="flex flex-wrap justify-center" style="gap: 30px;">
                 {% for produto in produtos %}
-                    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
                         <a href="#">
                             <img class="p-8 rounded-t-lg" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
                         </a>

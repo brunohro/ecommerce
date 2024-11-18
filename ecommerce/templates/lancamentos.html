@@ -7,7 +7,7 @@
         </div>
         <div class="products-grid">
             {% for produto in produtos %}
-                <div class="product-card">
+                <div class="product-card flex flex-col justify-between">
                     <a href="#">
                         <img class="product-image" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
                     </a>
