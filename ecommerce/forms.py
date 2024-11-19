@@ -1,5 +1,5 @@
 from django import forms
-from loja.models import Cliente
+from loja.models import Cliente, Produto
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -19,3 +19,8 @@ class ClienteForm(forms.ModelForm):
             'estado': forms.TextInput(attrs={'class': 'input-class', 'placeholder': 'Estado'}),
             'cep': forms.TextInput(attrs={'class': 'input-class', 'placeholder': 'CEP'}),
         }
+
+class ProdutoForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = "__all__"

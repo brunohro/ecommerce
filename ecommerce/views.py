@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from loja.models import Produto, Categoria, CarrinhoItem, Cliente
-from ecommerce.forms import ClienteForm
+from ecommerce.forms import ClienteForm, ProdutoForm
 
 def index(request):
     produto = Produto.objects.all()
@@ -38,6 +38,30 @@ def remover_cliente(request, id):
     return redirect('administrador')
     #return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})  # Exibe confirmação para remover
 
+
+def cadastrar_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Redireciona para a página inicial ou qualquer página desejada
+        form = ProdutoForm(request.POST)
+    else:
+        form = ProdutoForm()
+    return render(request, 'produtos/cadastrar_produtos.html', {'form': form})
+
+def editar_produto(request, id):
+    produto = get_object_or_404(Produto, id=id)
+    produto = Produto.objects.get(id=id)
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, request.FILES, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('administrador')  # Redireciona para a página inicial ou qualquer página desejada
+        form = ProdutoForm(request.POST)
+    else:
+        form = ProdutoForm(instance=produto)
+    return render(request, 'produtos/editar_produtos.html', {'form': form})
 
 
 def ofertas(request):
