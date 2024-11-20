@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'loja',
     'tailwind',
     'ecommerce',
+    'usuarios',
     'django_browser_reload',
 ]
 

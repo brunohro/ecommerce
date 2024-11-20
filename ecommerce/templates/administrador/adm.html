@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for cliente in clientes %}
+            {% for cliente in page_obj %}
             <tr>
                 <td class="px-4 py-2 border">{{ cliente.nome_completo }}</td>
                 <td class="px-4 py-2 border">{{ cliente.email }}</td>
@@ -35,12 +35,14 @@
             {% endfor %}
         </tbody>
     </table>
+    {% include "administrador/pagination.html" with page_obj=page_obj page_label='page1' %}
 </div>
+
 
 <div class="container py-10">
     <h1 class="text-3xl font-bold mb-6">Gerenciamento de Produtos</h1>
 
-    <!-- Botão para Adicionar Usuário -->
+     <!-- Botão para Adicionar Usuário -->
     <div class="mb-4">
         <a href="{% url 'cadastrar_produto' %}" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
             + Adicionar Produto
@@ -58,7 +60,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for produto in produtos %}
+            {% for produto in page_obj2 %}
             <tr>
                 <td class="px-4 py-2 border">{{ produto.nome }}</td>
                 <td class="px-4 py-2 border">{{ produto.preco }}</td>
@@ -71,12 +73,13 @@
             {% endfor %}
         </tbody>
     </table>
+    {% include "administrador/pagination.html" with page_obj=page_obj2 page_label='page2' %}
 </div>
 
 <div class="container py-10">
     <h1 class="text-3xl font-bold mb-6">Gerenciamento de Categorias</h1>
 
-    <!-- Botão para Adicionar Usuário -->
+    <!-- Botão para Adicionar Usuário --> 
     <div class="mb-4">
         <a href="#" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
             + Adicionar Categoria

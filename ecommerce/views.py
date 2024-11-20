@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from loja.models import Produto, Categoria, CarrinhoItem, Cliente
 from ecommerce.forms import ClienteForm, ProdutoForm
 
@@ -123,4 +124,16 @@ def adm(request):
     cliente = Cliente.objects.all()
     produto = Produto.objects.all()
     categoria = Categoria.objects.all()
-    return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto,})
+
+    list = Cliente.objects.all()
+    paginator = Paginator(list, 3)  # Show 3 contacts per page.
+    page_number = request.GET.get("page1")
+    page_obj = paginator.get_page(page_number)
+
+    list = Produto.objects.all()
+    paginator = Paginator(list, 8)  # Show 8 contacts per page.
+    page_number = request.GET.get("page2")
+    page_obj2 = paginator.get_page(page_number)
+    return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto, "page_obj": page_obj, "page_obj2": page_obj2})
+
+
