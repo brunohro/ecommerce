@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mx-auto">
-    <h1 class="title">CADASTRE-SE</h1>
+    <h1 class="title">CADASTRAR NOVO PRODUTO</h1>
     <div class="form-container">
         <form method="POST" action="." enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-actions">
                 <a type="button" class="cancel-btn" href="{% url 'index' %}">Cancelar</a>
-                <button type="submit" class="submit-btn">CADASTRE-SE</button>
+                <button type="submit" class="submit-btn">ADICIONAR</button>
             </div>
         </form>
     </div>

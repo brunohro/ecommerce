@@ -64,6 +64,12 @@ def editar_produto(request, id):
         form = ProdutoForm(instance=produto)
     return render(request, 'produtos/editar_produtos.html', {'form': form})
 
+def remover_produto(request, id):
+    produto = get_object_or_404(Produto, id=id)
+    produto = Produto.objects.get(id=id)
+    produto.delete() 
+    return redirect('administrador')
+
 
 def ofertas(request):
     produto = Produto.objects.all()
@@ -106,7 +112,7 @@ def carrinho(request):
     }
     return render(request, 'carrinho.html', context)
 
-def remover_produto(request, id):
+def remover_produto_carrinho(request, id):
     
     # Obtém o carrinho da sessão
     carrinho = request.session.get('carrinho', {})

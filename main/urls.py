@@ -6,9 +6,9 @@ from django.urls import path, include
 
 from django.urls import path
 from django.conf.urls.static import static
-from ecommerce.views import index, ofertas, carrinho, add_ao_carrinho, remover_produto, adm
+from ecommerce.views import index, ofertas, carrinho, add_ao_carrinho, remover_produto_carrinho, adm
 from ecommerce.views import cadastrar_cliente, editar_cliente, remover_cliente
-from ecommerce.views import cadastrar_produto, editar_produto
+from ecommerce.views import cadastrar_produto, editar_produto, remover_produto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,8 +18,9 @@ urlpatterns = [
     path('editar/<int:id>/', editar_cliente, name="editar_cliente"),
     path('editar_produto/<int:id>/', editar_produto, name="editar_produto"),
     path('remover/<int:id>/', remover_cliente, name="remover_cliente"),
-    path('add_ao_carrinho/<int:id>/', add_ao_carrinho, name='add_ao_carrinho'),
     path('remover_produto/<int:id>/', remover_produto, name='remover_produto'),
+    path('add_ao_carrinho/<int:id>/', add_ao_carrinho, name='add_ao_carrinho'),
+    path('remover_produto_carrinho/<int:id>/', remover_produto_carrinho, name='remover_produto_carrinho'),
     path('administrador/', adm, name='administrador'),
     path('ofertas/', ofertas, name='ofertas'),
     path('carrinho/', carrinho, name="carrinho"),
