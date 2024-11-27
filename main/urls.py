@@ -9,16 +9,20 @@ from django.conf.urls.static import static
 from ecommerce.views import index, ofertas, carrinho, add_ao_carrinho, remover_produto_carrinho, adm
 from ecommerce.views import cadastrar_cliente, editar_cliente, remover_cliente
 from ecommerce.views import cadastrar_produto, editar_produto, remover_produto
+from ecommerce.views import cadastrar_categoria, editar_categoria, remover_categoria
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('cadastrar/', cadastrar_cliente, name="cadastrar_cliente"),
     path('cadastrar_produto/', cadastrar_produto, name="cadastrar_produto"),
+    path('cadastrar_categoria/', cadastrar_categoria, name="cadastrar_categoria"),
     path('editar/<int:id>/', editar_cliente, name="editar_cliente"),
     path('editar_produto/<int:id>/', editar_produto, name="editar_produto"),
+    path('editar_categoria/<int:id>/', editar_categoria, name="editar_categoria"),
     path('remover/<int:id>/', remover_cliente, name="remover_cliente"),
     path('remover_produto/<int:id>/', remover_produto, name='remover_produto'),
+    path('remover_categoria/<int:id>/', remover_categoria, name='remover_categoria'),
     path('add_ao_carrinho/<int:id>/', add_ao_carrinho, name='add_ao_carrinho'),
     path('remover_produto_carrinho/<int:id>/', remover_produto_carrinho, name='remover_produto_carrinho'),
     path('administrador/', adm, name='administrador'),

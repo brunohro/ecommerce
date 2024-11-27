@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from loja.models import Produto, Categoria, CarrinhoItem, Cliente
-from ecommerce.forms import ClienteForm, ProdutoForm
+from ecommerce.forms import ClienteForm, ProdutoForm, CategoriaForm
 
 def index(request):
     produto = Produto.objects.all()
@@ -17,7 +17,6 @@ def cadastrar_cliente(request):
     else:
         form = ClienteForm()
     return render(request, 'clientes/cadastrar_cliente.html', {'form': form})
-
 
 def editar_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
@@ -70,11 +69,40 @@ def remover_produto(request, id):
     produto.delete() 
     return redirect('administrador')
 
+def cadastrar_categoria(request):
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Redireciona para a página inicial ou qualquer página desejada
+    else:
+        form = CategoriaForm()
+    return render(request, 'categorias/cadastrar_categoria.html', {'form': form})
 
-def ofertas(request):
-    produto = Produto.objects.all()
-    categoria = Categoria.objects.all()
-    return render(request, 'ofertas.html', {'produtos': produto, 'categorias': categoria})
+def editar_categoria(request, id):
+    # Obtém a categoria pelo ID ou retorna um erro 404
+    categoria = get_object_or_404(Categoria, id=id)  
+
+    if request.method == 'POST':
+        # Manipula o formulário enviado
+        form = CategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            return redirect('administrador') 
+    else:
+        # Exibe o formulário com os dados da categoria existente
+        form = CategoriaForm(instance=categoria)
+
+    return render(request, 'categorias/editar_categoria.html', {'form': form})
+
+def remover_categoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    categoria = Categoria.objects.get(id=id)
+    categoria.delete() 
+    return redirect('administrador')
+    #return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})  # Exibe confirmação para remover
+
+
 def carrinho(request):
     return render(request, 'carrinho.html')
 
@@ -143,3 +171,7 @@ def adm(request):
     return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto, "page_obj": page_obj, "page_obj2": page_obj2})
 
 
+def ofertas(request):
+    produto = Produto.objects.all()
+    categoria = Categoria.objects.all()
+    return render(request, 'ofertas.html', {'produtos': produto, 'categorias': categoria})

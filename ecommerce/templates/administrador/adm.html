@@ -81,7 +81,7 @@
 
     <!-- Botão para Adicionar Usuário --> 
     <div class="mb-4">
-        <a href="#" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
+        <a href="{% url "cadastrar_categoria" %}" class=" px-4 py-2 rounded text-white" style="background-color: #333;">
             + Adicionar Categoria
         </a>
     </div>
@@ -98,8 +98,8 @@
             <tr>
                 <td class="px-4 py-2 border">{{ categoria.nome }}</td>
                 <td class="px-4 py-2 border">
-                    <a href="#" class="text-blue-500 hover:underline">Editar</a> |
-                    <a href="#" class="text-red-500 hover:underline">Remover</a>
+                    <a href="{% url "editar_categoria" categoria.id %}" class="text-blue-500 hover:underline">Editar</a> |
+                    <a href="{% url "remover_categoria" categoria.id %}" class="text-red-500 hover:underline">Remover</a>
                 </td>
             </tr>
             {% endfor %}
