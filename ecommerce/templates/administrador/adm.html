@@ -17,7 +17,7 @@
             <tr>
                 <th class="px-4 py-2 border">Nome</th>
                 <th class="px-4 py-2 border">Email</th>
-                <th class="px-4 py-2 border">Função</th>
+                <th class="px-4 py-2 border">CPF</th>
                 <th class="px-4 py-2 border">Ações</th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
             <tr>
                 <td class="px-4 py-2 border">{{ cliente.nome_completo }}</td>
                 <td class="px-4 py-2 border">{{ cliente.email }}</td>
-                <td class="px-4 py-2 border">{{ cliente.funcao }}</td>
+                <td class="px-4 py-2 border">{{ cliente.cpf }}</td>
                 <td class="px-4 py-2 border">
                     <a href="{% url 'editar_cliente' cliente.id %}" class="text-blue-500 hover:underline">Editar</a> |
                     <a href="{% url 'remover_cliente' cliente.id %}" class="text-red-500 hover:underline">Remover</a>

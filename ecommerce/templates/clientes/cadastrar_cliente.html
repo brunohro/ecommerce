@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mx-auto">
-    <h1 class="title">CADASTRE-SE</h1>
+    <h1 class="title">PÁGINA DE CADASTRO</h1>
     <div class="form-container">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-actions">
                 <a type="button" class="cancel-btn" href="{% url "index" %}">Cancelar</a>
-                <button type="submit" class="submit-btn">CADASTRE-SE</button>
+                <button type="submit" class="submit-btn">CADASTRAR</button>
             </div>
         </form>
     </div>
@@ -88,6 +88,15 @@
         cursor: pointer;
     }
     
+    .submit-btn {
+        background-color: #000152;
+        color: #fff;
+    }
+    
+    .submit-btn:hover {
+        background-color: #1869c5;
+    }
+    
     .cancel-btn {
         background-color: #ddd;
         color: #333;
@@ -97,14 +106,6 @@
         background-color: #ccc;
     }
     
-    .submit-btn {
-        background-color: #e53e3e;
-        color: #fff;
-    }
-    
-    .submit-btn:hover {
-        background-color: #c53030;
-    }
     .input-class {
         width: 100%;
         padding: 8px;
