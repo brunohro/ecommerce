@@ -1,7 +1,7 @@
-{% block content %}    
-<section style="background-color: white">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div class="max-w-screen-md mb-8 lg:mb-16">
+{% block content %}
+<section class="products-section">
+    <div class="container">
+        <div class="header">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
                 Ofertas Imperdíveis
             </h2>
@@ -9,35 +9,158 @@
                 Descubra nossos produtos com preços especiais e aproveite as melhores oportunidades. Não perca!
             </p>
         </div>
-            <div class="flex flex-wrap justify-center" style="gap: 30px;">
-                {% for produto in produtos %}
-                    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
+        <div class="products-grid">
+            {% for produto in produtos %}
+                <div class="product-card flex flex-col justify-between">
+                    <a href="#">
+                        <img class="product-image" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
+                    </a>
+                    <div class="product-details">
                         <a href="#">
-                            <img class="p-8 rounded-t-lg" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
+                            <h5 class="product-name">{{ produto.nome }}</h5>
                         </a>
-                        <div class="px-5 pb-5">
-                            <a href="#">
-                                <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ produto.nome }}</h5>
-                            </a>
-                            <div class="flex items-center mt-2.5 mb-5">
-                                <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                                    <!-- SVGs das estrelas de avaliação -->
-                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                                    </svg>
-                                    <!-- (Repita o SVG acima para exibir mais estrelas) -->
-                                </div>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                        <div class="rating">
+                            <div class="stars">
+                                <!-- SVG das estrelas de avaliação -->
+                                <svg class="star" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                </svg>
+                                <!-- (Repita o SVG para mais estrelas) -->
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-3xl font-bold text-gray-900 dark:text-white">R$ {{ produto.preco }}</span>
-                                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add ao carrinho</a>
-                            </div>
+                            <span class="rating-value">5.0</span>
+                        </div>
+                        <div class="price-and-cart">
+                            <span class="price">R$ {{ produto.preco }}</span>
+                            <a href="{% url 'add_ao_carrinho' produto.id %}" class="add-to-cart-btn">Add ao carrinho</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-
+                </div>
+            {% endfor %}
         </div>
-      </section>
+    </div>
+</section>
+
+<style>
+    .products-section {
+        background-color: white;
+        padding: 40px 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #333;
+    }
+
+    .description {
+        font-size: 1.125rem;
+        color: #555;
+    }
+
+    .products-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .product-card {
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+        width: 100%;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 16px;
+        object-fit: contain;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .product-details {
+        padding: 16px;
+    }
+
+    .product-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .stars {
+        display: flex;
+    }
+
+    .star {
+        width: 16px;
+        height: 16px;
+        color: #ffc107;
+        margin-right: 2px;
+    }
+
+    .rating-value {
+        background-color: #cfe2ff;
+        color: #1d4ed8;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+    }
+
+    .price-and-cart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #111;
+    }
+
+    .add-to-cart-btn {
+        background-color: #1d4ed8;
+        color: white;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #1e40af;
+    }
+</style>
+
 {% endblock content %}

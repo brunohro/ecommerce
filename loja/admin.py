@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categoria, Produto, Carrinho, CarrinhoItem, Cliente
+from .models import Categoria, Produto, Carrinho, CarrinhoItem, Cliente, Area
 
 # Register your models here.
 @admin.register(Categoria)
@@ -21,4 +21,8 @@ class CarrinhoItemAdmin(admin.ModelAdmin):
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome_completo',) 
+    
+@admin.register(Area)
+class AreaAdmin(admin.ModelAdmin):
+    list_display = ('nome',) 
 
