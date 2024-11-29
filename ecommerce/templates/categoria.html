@@ -11,22 +11,30 @@
         <div class="container mx-auto text-center">
             <h2 class="titlee">Categorias</h2>
             <div class="categories-container">
-                <div class="category-item">
-                    <img src="{% static 'image/roupas.jpg' %}" alt="Roupas" class="category-img" />
-                    <span class="category-name">Roupas</span>
-                </div>
-                <div class="category-item">
-                    <img src="{% static 'image/calcados.jpg' %}" alt="Calçados" class="category-img" />
-                    <span class="category-name">Calçados</span>
-                </div>
-                <div class="category-item">
-                    <img src="{% static 'image/informatica.jpg' %}" alt="Informática" class="category-img" />
-                    <span class="category-name">Informática</span>
-                </div>
-                <div class="category-item">
-                    <img src="{% static 'image/acessorios.jpg' %}" alt="Acessórios" class="category-img" />
-                    <span class="category-name">Acessórios</span>
-                </div>
+                <a href="{% url "roupas" %}">
+                    <div class="category-item">
+                        <img src="{% static 'image/roupas.jpg' %}" alt="Roupas" class="category-img" />
+                        <span class="category-name">Roupas</span>
+                    </div>
+                </a>
+                <a href="{% url "calcados" %}">
+                    <div class="category-item">
+                        <img src="{% static 'image/calcados.jpg' %}" alt="Calçados" class="category-img" />
+                        <span class="category-name">Calçados</span>
+                    </div>
+                </a>
+                <a href="{% url "informatica" %}">
+                    <div class="category-item">
+                        <img src="{% static 'image/informatica.jpg' %}" alt="Informática" class="category-img" />
+                        <span class="category-name">Informática</span>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category-item">
+                        <img src="{% static 'image/acessorios.jpg' %}" alt="Acessórios" class="category-img" />
+                        <span class="category-name">Acessórios</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section> 
