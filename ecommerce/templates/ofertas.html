@@ -36,8 +36,10 @@
                         </div>
                     </div>
                 </div>
+            {% empty %}
+                <p>Não há produtos em oferta no momento.</p>
             {% endfor %}
-        </div>
+        </div>        
     </div>
     <style>
         .products-section {

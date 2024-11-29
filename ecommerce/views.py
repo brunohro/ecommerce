@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from loja.models import Produto, Categoria, CarrinhoItem, Cliente
+from loja.models import Produto, Categoria, CarrinhoItem, Cliente, Area
 from ecommerce.forms import ClienteForm, ProdutoForm, CategoriaForm
 
 def index(request):
@@ -103,10 +103,6 @@ def remover_categoria(request, id):
     #return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})  # Exibe confirmação para remover
 
 
-def carrinho(request):
-    return render(request, 'carrinho.html')
-
-
 def add_ao_carrinho(request, id):
     # Obtém o produto pelo ID
     produto = get_object_or_404(Produto, id=id)
@@ -170,13 +166,21 @@ def adm(request):
     page_obj2 = paginator.get_page(page_number)
     return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto, "page_obj": page_obj, "page_obj2": page_obj2})
 
-
 def ofertas(request):
-    produto = Produto.objects.all()
-    categoria = Categoria.objects.all()
-    return render(request, 'ofertas.html', {'produtos': produto, 'categorias': categoria})
+    try:
+        area_ofertas = Area.objects.get(nome="Ofertas") 
+        produtos_em_oferta = Produto.objects.filter(area=area_ofertas) 
+    except Area.DoesNotExist:
+        produtos_em_oferta = [] 
+    categorias = Categoria.objects.all()
+    return render(request, 'ofertas.html', {'produtos': produtos_em_oferta, 'categorias': categorias})
+
 
 def lancamentos(request):
-    produto = Produto.objects.all()
+    try:
+        area_lancamentos = Area.objects.get(nome="Lançamento") 
+        produtos_em_lancamento = Produto.objects.filter(area=area_lancamentos) 
+    except Area.DoesNotExist:
+        produtos_em_lancamento = [] 
     categoria = Categoria.objects.all()
-    return render(request, 'lancamentos.html', {'produtos': produto, 'categorias': categoria})
+    return render(request, 'lancamentos.html', {'produtos': produtos_em_lancamento, 'categorias': categoria})
