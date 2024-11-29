@@ -184,3 +184,8 @@ def lancamentos(request):
         produtos_em_lancamento = [] 
     categoria = Categoria.objects.all()
     return render(request, 'lancamentos.html', {'produtos': produtos_em_lancamento, 'categorias': categoria})
+
+def roupas(request):
+    produtos = Produto.objects.filter(categoria__nome="Roupas")  # Filtra produtos cuja categoria tenha o nome "Roupas"
+    categorias = Categoria.objects.all()
+    return render(request, 'roupas.html', {'produtos': produtos, 'categorias': categorias})
