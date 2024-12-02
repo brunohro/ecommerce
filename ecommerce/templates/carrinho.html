@@ -15,7 +15,7 @@
                     <p>Quantidade: <input class="quantidade" data-preco="{{ item.preco }}" data-id="{{ id }}" type="number" value="1" min="1"></p>
                     <p>Preço unitário: R$ {{ item.preco }}</p>
                     <p id="preco-total-{{ id }}">Preço total: R$ </p>
-                    <a class="remove-btn" href="{% url 'remover_produto' id %}">Remover</a>
+                    <a class="remove-btn" href="{% url 'remover_produto_carrinho' id %}">Remover</a>
                 </div>
             </div>
         {% endfor %}
