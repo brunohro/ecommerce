@@ -8,6 +8,9 @@ def index(request):
     categoria = Categoria.objects.all()
     return render(request, 'index.html', {'produtos': produto, 'categorias': categoria})
 
+def login(request):
+    return render(request, 'login.html')
+
 def cadastrar_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
