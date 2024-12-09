@@ -47,7 +47,7 @@
             position: absolute;
             top: 50%;
             right: 10px;
-            transform: translateY(-50%);
+            transform: translateY(-70%);
             background-color: transparent;
             border: none;
             cursor: pointer;
@@ -72,12 +72,15 @@
 </head>
 <body>
     <section class="search-section" style="background-color: black;">
-        <div class="search-container">
-            <input type="text" placeholder="Digite sua pesquisa..." id="searchInput">
-            <button onclick="performSearch()">
-                <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Ícone de Pesquisa">
-            </button>
-        </div>
+        <form action="{% url 'index' %}" class="flex self-center" method="post">
+            {% csrf_token %}
+            <div class="search-container">
+                <input name="search" type="text" placeholder="Digite sua pesquisa..." id="searchInput">
+                <button onclick="performSearch()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Ícone de Pesquisa">
+                </button>
+            </div>
+        </form>
     </section>
 </body>
 </html>

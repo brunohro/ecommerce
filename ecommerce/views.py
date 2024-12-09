@@ -5,9 +5,15 @@ from ecommerce.forms import ClienteForm, ProdutoForm, CategoriaForm
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 
 def index(request):
-    produto = Produto.objects.all()
+    produtos = Produto.objects.all()
     categoria = Categoria.objects.all()
-    return render(request, 'index.html', {'produtos': produto, 'categorias': categoria})
+
+    if request.method == 'POST':
+        query_pesquisa = request.POST.get("search", None)
+        if query_pesquisa is not None:
+            produtos = produtos.filter(nome__icontains=query_pesquisa)
+
+    return render(request, 'index.html', {'produtos': produtos, 'categorias': categoria})
 
 def login(request):
     if request.method == 'POST':
