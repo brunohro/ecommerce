@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from loja.models import Produto, Categoria, CarrinhoItem, Cliente, Area
 from ecommerce.forms import ClienteForm, ProdutoForm, CategoriaForm
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 
 def index(request):
     produto = Produto.objects.all()
@@ -9,13 +10,30 @@ def index(request):
     return render(request, 'index.html', {'produtos': produto, 'categorias': categoria})
 
 def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, email=email, password=password)
+
+        if user:
+            django_login(request, user)
+            return redirect('index')
+
     return render(request, 'login.html')
+
+def logout(request):
+    django_logout(request)
+
+    return redirect('index')
 
 def cadastrar_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save() 
+            user.set_password(form.cleaned_data['password'])
+            user.save()
             return redirect('index')  # Redireciona para a página inicial ou qualquer página desejada
     else:
         form = ClienteForm()
@@ -27,7 +45,9 @@ def editar_cliente(request, id):
     if request.method == 'POST':
         form = ClienteForm(request.POST, instance=cliente)
         if form.is_valid():
-            form.save() 
+            user = form.save() 
+            user.set_password(form.cleaned_data['password'])
+            user.save()
             return redirect('index')
     else:
         form = ClienteForm(instance=cliente)

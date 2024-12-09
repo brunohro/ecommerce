@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser, UserManager
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
@@ -42,10 +43,26 @@ class CarrinhoItem(models.Model):
 
     def __str__(self):
         return self.produto
+
+class CustomManager(UserManager):
+    def create_user(self, email, password, **data):
+        user = Cliente(email=email, **data)
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
     
+    def create_super_user(self, email, password, **data):
+        user = Cliente(email=email, **data)
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+        
     
-class Cliente(models.Model):
+class Cliente(AbstractUser):
     # Identificação básica do cliente
+    username = models.CharField(max_length=100, null=True)
     nome_completo = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=20, blank=True, null=True)
@@ -65,6 +82,11 @@ class Cliente(models.Model):
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
     ativo = models.BooleanField(default=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    objects = CustomManager()
 
     def __str__(self):
         return self.nome_completo
