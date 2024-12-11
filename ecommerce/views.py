@@ -27,12 +27,13 @@ def login(request):
             django_login(request, user)
             return redirect('index')
 
-    return render(request, 'login.html')
+    return render(request, 'autenticacao/login.html')
 
 def logout(request):
     django_logout(request)
 
     return redirect('index')
+
 
 def cadastrar_cliente(request):
     if request.method == 'POST':
@@ -59,7 +60,6 @@ def editar_cliente(request, id):
     else:
         form = ClienteForm(instance=cliente)
     return render(request, 'clientes/cadastrar_cliente.html', {'form': form})
-
 
 def remover_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
@@ -99,6 +99,7 @@ def remover_produto(request, id):
     produto.delete() 
     return redirect('administrador')
 
+
 def cadastrar_categoria(request):
     if request.method == 'POST':
         form = CategoriaForm(request.POST)
@@ -132,6 +133,7 @@ def remover_categoria(request, id):
     return redirect('administrador')
     #return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})  # Exibe confirmação para remover
 
+
 @login_required
 def add_ao_carrinho(request, id):
     # Obtém o produto pelo ID
@@ -156,7 +158,6 @@ def add_ao_carrinho(request, id):
 
     return redirect('carrinho')
 
-
 def carrinho(request):
     carrinho = request.session.get('carrinho', {})
     preco_total = sum(float(item['preco']) * item['quantidade'] for item in carrinho.values())
@@ -165,7 +166,7 @@ def carrinho(request):
         'carrinho': carrinho.items(),
         'preco_total': preco_total
     }
-    return render(request, 'carrinho.html', context)
+    return render(request, 'layout/carrinho.html', context)
 
 def remover_produto_carrinho(request, id):
     
@@ -180,6 +181,7 @@ def remover_produto_carrinho(request, id):
     request.session['carrinho'] = carrinho
 
     return redirect('carrinho')
+
 
 def adm(request):
     cliente = Cliente.objects.all()
@@ -197,6 +199,7 @@ def adm(request):
     page_obj2 = paginator.get_page(page_number)
     return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto, "page_obj": page_obj, "page_obj2": page_obj2})
 
+
 def ofertas(request):
     try:
         area_ofertas = Area.objects.get(nome="Ofertas") 
@@ -204,7 +207,7 @@ def ofertas(request):
     except Area.DoesNotExist:
         produtos_em_oferta = [] 
     categorias = Categoria.objects.all()
-    return render(request, 'ofertas.html', {'produtos': produtos_em_oferta, 'categorias': categorias})
+    return render(request, 'paginas/ofertas/ofertas.html', {'produtos': produtos_em_oferta, 'categorias': categorias})
 
 
 def lancamentos(request):
@@ -214,19 +217,22 @@ def lancamentos(request):
     except Area.DoesNotExist:
         produtos_em_lancamento = [] 
     categoria = Categoria.objects.all()
-    return render(request, 'lancamentos.html', {'produtos': produtos_em_lancamento, 'categorias': categoria})
+    return render(request, 'paginas/lancamentos/lancamentos.html', {'produtos': produtos_em_lancamento, 'categorias': categoria})
+
 
 def suplemento(request):
     produtos = Produto.objects.filter(categoria__nome="Suplementos") 
     categorias = Categoria.objects.all()
-    return render(request, 'suplementos.html', {'produtos': produtos, 'categorias': categorias})
+    return render(request, 'paginas/suplementos/suplementos.html', {'produtos': produtos, 'categorias': categorias})
+
 
 def esportes(request):
     produtos = Produto.objects.filter(categoria__nome="Esportes")  
     categorias = Categoria.objects.all()
-    return render(request, 'esportes.html', {'produtos': produtos, 'categorias': categorias})
+    return render(request, 'paginas/esportes/esportes.html', {'produtos': produtos, 'categorias': categorias})
+
 
 def informatica(request):
     produtos = Produto.objects.filter(categoria__nome="Informática")  
     categorias = Categoria.objects.all()
-    return render(request, 'informatica.html', {'produtos': produtos, 'categorias': categorias})
+    return render(request, 'paginas/informatica/informatica.html', {'produtos': produtos, 'categorias': categorias})

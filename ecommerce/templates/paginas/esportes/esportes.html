@@ -1,14 +1,14 @@
-{% extends "base.html" %}
+{% extends "layout/base.html" %}
 {% block content %}
 <section class="products-section">
     <div class="container">
         <div class="header">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
-                Ofertas Imperdíveis
+                Esportes com Energia e Paixão
             </h2>
             <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-                Descubra nossos produtos com preços especiais e aproveite as melhores oportunidades. Não perca!
-            </p>
+                Descubra os melhores produtos para práticas esportivas. Qualidade, desempenho e conforto para acompanhar você em todas as modalidades, com preços incríveis!
+            </p>            
         </div>
         <div class="products-grid">
             {% for produto in produtos %}
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             {% empty %}
-                <p>Não há produtos em oferta no momento.</p>
+                <p>Não há produtos aqui no momento.</p>
             {% endfor %}
         </div>        
     </div>

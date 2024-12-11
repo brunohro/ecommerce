@@ -1,3 +1,4 @@
+{% extends "layout/base.html" %}
 {% block content %}
 <section class="products-section">
     <div class="container">
@@ -9,13 +10,7 @@
             {% for produto in produtos %}
                 <div class="product-card flex flex-col justify-between">
                     <a href="#">
-                        {% if produto.imagem and produto.imagem.url %}
-                            <!-- Exibe a imagem do produto -->
-                            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
-                        {% else %}
-                            <!-- Exibe uma imagem padrão -->
-                            <img src="/static/images/default-image.jpg" alt="Imagem padrão">
-                        {% endif %}
+                        <img class="product-image" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
                     </a>
                     <div class="product-details">
                         <a href="#">
