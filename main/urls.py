@@ -6,7 +6,7 @@ from django.urls import path, include
 
 from django.urls import path
 from django.conf.urls.static import static
-from ecommerce.views import index, ofertas, suplemento, informatica, carrinho, calcados, add_ao_carrinho, remover_produto_carrinho, adm, lancamentos, login, logout
+from ecommerce.views import index, ofertas, suplemento, informatica, carrinho, esportes, add_ao_carrinho, remover_produto_carrinho, adm, lancamentos, login, logout
 from ecommerce.views import cadastrar_cliente, editar_cliente, remover_cliente
 from ecommerce.views import cadastrar_produto, editar_produto, remover_produto
 from ecommerce.views import cadastrar_categoria, editar_categoria, remover_categoria
@@ -32,7 +32,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('ofertas/', ofertas, name='ofertas'),
     path('suplementos/', suplemento, name='suplementos'),
-    path('calcados/', calcados, name='calcados'),
+    path('esportes/', esportes, name='esportes'),
     path('informatica/', informatica, name='informatica'),
     path('lancamentos/', lancamentos, name='lancamentos'),
 ]

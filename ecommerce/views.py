@@ -221,10 +221,10 @@ def suplemento(request):
     categorias = Categoria.objects.all()
     return render(request, 'suplementos.html', {'produtos': produtos, 'categorias': categorias})
 
-def calcados(request):
-    produtos = Produto.objects.filter(categoria__nome="Calçados")  
+def esportes(request):
+    produtos = Produto.objects.filter(categoria__nome="Esportes")  
     categorias = Categoria.objects.all()
-    return render(request, 'calcados.html', {'produtos': produtos, 'categorias': categorias})
+    return render(request, 'esportes.html', {'produtos': produtos, 'categorias': categorias})
 
 def informatica(request):
     produtos = Produto.objects.filter(categoria__nome="Informática")  
