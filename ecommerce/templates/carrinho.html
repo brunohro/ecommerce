@@ -7,7 +7,7 @@
         {% for id, item in carrinho %}
             <div class="cart-item" data-id="{{ id }}" id="{{ id }}">
                 <div class="item-image">
-                    <img src="https://via.placeholder.com/80" alt="Imagem do Produto">
+                    <img src="{{ item.imagem }}" alt="Imagem do Produto">
                 </div>
                 <div class="item-details">
                     <h2>{{ item.produto_nome }}</h2>

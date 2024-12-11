@@ -40,7 +40,7 @@ def cadastrar_cliente(request):
             user = form.save() 
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('index')  # Redireciona para a página inicial ou qualquer página desejada
+            return redirect('login')  # Redireciona para a página inicial ou qualquer página desejada
     else:
         form = ClienteForm()
     return render(request, 'clientes/cadastrar_cliente.html', {'form': form})
@@ -146,7 +146,8 @@ def add_ao_carrinho(request, id):
         carrinho[str(id)] = {
             'produto_nome': produto.nome,
             'preco': str(produto.preco),
-            'quantidade': 1
+            'quantidade': 1,
+            'imagem': produto.imagem.url
         }
 
     # Salva o carrinho na sessão
