@@ -84,7 +84,7 @@ class Cliente(AbstractUser):
     ativo = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'cpf']
+    REQUIRED_FIELDS = ['nome_completo', 'username', 'cpf']
 
     objects = CustomManager()
 

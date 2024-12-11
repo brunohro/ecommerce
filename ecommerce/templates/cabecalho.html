@@ -18,7 +18,7 @@
                 </a>
                 <div class="flex items-center lg:order-2">
                     {% if request.user.is_authenticated %}
-                    <p class="text-white">Olá, {{ request.user.username }}</p>
+                    <p class="text-white">Olá, {{ request.user.nome_completo }}</p>
                     <a href="{% url 'logout' %}" class="text-white dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Sair</a>
                     {% else %}
                     <a href="{% url 'login' %}" class="text-white dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Entre ou Cadastre-se</a>

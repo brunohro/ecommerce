@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from loja.models import Produto, Categoria, CarrinhoItem, Cliente, Area
 from ecommerce.forms import ClienteForm, ProdutoForm, CategoriaForm
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
@@ -131,7 +132,7 @@ def remover_categoria(request, id):
     return redirect('administrador')
     #return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})  # Exibe confirmação para remover
 
-
+@login_required
 def add_ao_carrinho(request, id):
     # Obtém o produto pelo ID
     produto = get_object_or_404(Produto, id=id)

@@ -9,7 +9,6 @@ def index(request):
 def carrinho(request):
     return render(request, 'loja/carrinho.html')
 
-
 def add_ao_carrinho(request, id):
     # Obtém o produto pelo ID
     produto = get_object_or_404(Produto, id=id)
