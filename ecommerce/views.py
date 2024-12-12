@@ -145,12 +145,14 @@ def add_ao_carrinho(request, id):
     # Adiciona ou incrementa o produto no carrinho
     if str(id) in carrinho:
         carrinho[str(id)]['quantidade'] += 1
+        carrinho[str(id)]['preco_total'] = str(float(carrinho[str(id)]['quantidade']) * float(carrinho[str(id)]['preco']))
     else:
         carrinho[str(id)] = {
             'produto_nome': produto.nome,
             'preco': str(produto.preco),
             'quantidade': 1,
-            'imagem': produto.imagem.url
+            'imagem': produto.imagem.url,
+            'preco_total': str(produto.preco)
         }
 
     # Salva o carrinho na sessão
@@ -236,3 +238,16 @@ def informatica(request):
     produtos = Produto.objects.filter(categoria__nome="Informática")  
     categorias = Categoria.objects.all()
     return render(request, 'paginas/informatica/informatica.html', {'produtos': produtos, 'categorias': categorias})
+
+def finalizar_compra(request):
+    carrinho = request.session.get('carrinho', {})
+    preco_total = sum(float(item['preco']) * item['quantidade'] for item in carrinho.values())
+
+    context = {
+        'carrinho': carrinho.items(),
+        'preco_total': preco_total
+    }
+
+    request.session['carrinho'] = {}
+    
+    return render(request, 'paginas/compras/finalizar_compra.html', context)
