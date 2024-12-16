@@ -196,7 +196,7 @@ def adm(request):
     page_obj = paginator.get_page(page_number)
 
     list = Produto.objects.all()
-    paginator = Paginator(list, 8)  # Show 8 contacts per page.
+    paginator = Paginator(list, 6)  # Show 6 contacts per page.
     page_number = request.GET.get("page2")
     page_obj2 = paginator.get_page(page_number)
     return render(request, 'administrador/adm.html', {'clientes': cliente, 'categorias': categoria, 'produtos': produto, "page_obj": page_obj, "page_obj2": page_obj2})
